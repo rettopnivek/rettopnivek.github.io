@@ -3,9 +3,8 @@ layout: default
 title: Curriculum vitae
 ---
 
-**Kevin Potter**  
 **Curriculum vitae**  
-February, 2016
+Updated February, 2016
 
 #### CONTACT INFORMATION
 
