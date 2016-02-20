@@ -4,7 +4,9 @@ title: Curriculum vitae
 ---
 
 # Kevin Potter
+
 # Curriculum vitae
+
 ### February, 2016
 
 ## CONTACT INFORMATION
@@ -52,5 +54,5 @@ Psychometrics
 
 ## CONFERENCE PRESENTATIONS
 
-* Kim, Sungmin, **Potter, K.**, Craigmile, P.F., Peruggia, M. & Van Zandt, T. (2014).  A Bayesian Race Model to Decompose Recognition Memory Performance.  47th Annual Meeting of the Society for Mathematical Psychology, Quebec City, Quebec.
-* **Potter, K.** & Van Zandt, T. (2015). Perfectionism, decision-making, and post-error slowing. Psychonomic Society's 56th Annual Meeting, Chicago, Illinois.
+* Kim, Sungmin, **Potter, K.**, Craigmile, P.F., Peruggia, M. & Van Zandt, T. (2014).  A Bayesian Race Model to Decompose Recognition Memory Performance. *47th Annual Meeting of the Society for Mathematical Psychology*, Quebec City, Quebec.
+* **Potter, K.** & Van Zandt, T. (2015). Perfectionism, decision-making, and post-error slowing. *Psychonomic Society's 56th Annual Meeting*, Chicago, Illinois.
