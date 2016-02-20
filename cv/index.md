@@ -3,8 +3,35 @@ layout: default
 title: Curriculum vitae
 ---
 
-I am currently a post-doctoral researcher at the Department of Psychological and Brain Sciences at UMass Amherst. My research currently is focused on applying simple choice and response time models in the study of priming and memory.
+February, 2016
 
-Test  
-Test 2  
-Test 3
+## CONTACT INFORMATION
+
+Department of Psychological and Brain Sciences  
+University of Massachusetts Amherst  
+441 Tobin Hall  
+Amherst, MA 43210  
+
+| | |
+| - | :-: |
+|Email:| kevin.w.potter@gmail.com|
+|Phone number:| (614) 425 - 5897 |
+
+## EDUCATION
+
+2015 Ohio State University, Ph.D., Quantitative Psychology  
+2011 Ohio State University, M.A., Quantitative Psychology  
+2009 Grinnell College, B.A., Psychology
+
+## RESEARCH SPECIALIZATION
+
+Quantitative methods  
+Cognitive modeling of simple choice and response time  
+Psychometrics
+
+## FELLOWSHIPS
+
+2014 -- Summer Teaching Excellence Fellowship, The Ohio State University  
+2013 -- Graduate Teaching Assistant Excellence Award, The Ohio State University  
+2010 -- Psychology Department Fellowship Recipient, The Ohio State University  
+2009 -- University Fellowship Recipient, The Ohio State University
