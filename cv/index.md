@@ -3,7 +3,7 @@ layout: default
 title: Curriculum vitae
 ---
 
-**Curriculum vitae**  
+## Curriculum vitae  
 Updated February, 2016
 
 #### CONTACT INFORMATION
