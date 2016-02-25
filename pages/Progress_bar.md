@@ -16,4 +16,4 @@ for (i in 1:total) {
 }
 close(pb)
 ~~~
-The third style is nice because it includes a percentage and indicates both the start and end of the progress bar.
+The third style is nice because it also shows the percentage and indicates both the start and end of the progress bar.
