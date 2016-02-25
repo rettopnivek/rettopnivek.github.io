@@ -1,4 +1,4 @@
 name: Kevin potter
-markdown: redcarpet2
+markdown: kramdown
 
 BASE_PATH : http://rettopnivek.github.io
