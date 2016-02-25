@@ -4,6 +4,6 @@ layout: page
 
 ## This is a test.
 
-{% highlight python %}
+```python
     from scipy import ndimage as nd
-{% endhighlight %}
+```
