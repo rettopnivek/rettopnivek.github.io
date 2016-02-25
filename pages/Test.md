@@ -1,9 +1,6 @@
 ---
-title: "Test"
-author: "Kevin Potter"
-output: html_document
-status: publish
-published: true
+layout: page
+title: Test
 ---
  
 This is a test.
