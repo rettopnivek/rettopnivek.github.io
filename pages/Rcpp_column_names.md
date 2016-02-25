@@ -5,7 +5,7 @@ layout: page
 ## Setting column names in Rcpp
 
 Rcpp provides an easy way to set the column names of a matrix.  
-```r
+{% highlight r %}
 library(Rcpp)
 cppFunction('
   NumericMatrix matEx( ) {
@@ -18,4 +18,4 @@ cppFunction('
     return( mat );
   }
 ')
-```
+{% highlight r %}
