@@ -1,10 +1,10 @@
 ---
 layout: page
-title: Progress bar in R
 ---
 
-Here is an example of creating a simple text progress bar in R to track the progress of a loop:
+## Progress bar in R
 
+Here is an example of creating a simple text progress bar in R to track the progress of a loop:  
 ```r
 # Set the maximum number of iterations
 total = 10
@@ -15,6 +15,5 @@ for (i in 1:total) {
 	setTxtProgressBar(pb,i)
 }
 close(pb)
-```
-
+```  
 The third style is nice because it includes a percentage and indicates both the start and end of the progress bar.
