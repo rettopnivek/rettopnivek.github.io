@@ -1,4 +1,6 @@
 name: Kevin potter
 markdown: kramdown
+  input: GFM
+  syntax_highlighter: rouge
 
 BASE_PATH : http://rettopnivek.github.io
