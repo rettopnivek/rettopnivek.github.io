@@ -1,5 +1,5 @@
 name: Kevin potter
 markdown: kramdown
-highlighter: rouge
+highlighter: pygments
 
 BASE_PATH : http://rettopnivek.github.io
