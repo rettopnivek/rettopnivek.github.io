@@ -1,13 +1,13 @@
 body {
     margin: 60px auto;
     width: 70%;
-    <!--background-color: rgb(220, 220, 220);-->
+    background-color: rgb(180, 180, 180);
 }
 div {
-    border: 10px dotted black;
+    border: 10px black;
     padding:35px;
     background: rgb(220, 220, 220);
-    background-clip: content-box;
+    background-clip: border-box;
 }
 nav ul, footer ul {
     font-family:'Helvetica', 'Arial', 'Sans-Serif';
