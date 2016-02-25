@@ -5,7 +5,7 @@ layout: page
 ## Progress bar in R
 
 Here is an example of creating a simple text progress bar in R to track the progress of a loop:  
-~~~
+{% highlight python %}
 # Set the maximum number of iterations
 total = 10
 # Create a progress bar using a base R function
@@ -15,5 +15,5 @@ for (i in 1:total) {
 	setTxtProgressBar(pb,i)
 }
 close(pb)
-~~~
+{% highlight python %}
 The third style is nice because it also shows the percentage and indicates both the start and end of the progress bar.
