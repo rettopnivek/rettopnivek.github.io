@@ -5,7 +5,7 @@ layout: page
 ## Progress bar in R
 
 Here is an example of creating a simple text progress bar in R to track the progress of a loop:  
-<pre><code class="r">
+<pre><code class="matlab">
 # Set the maximum number of iterations
 total = 10
 # Create a progress bar using a base R function
