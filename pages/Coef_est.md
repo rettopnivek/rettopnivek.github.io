@@ -51,11 +51,13 @@ cppFunction('
 This is a very useful method to handle a large number of conditions when creating your own likelihood function. However, it isn't intuitive on how to use this function, so here's an example.
 ### Example
 Suppose we have 4 conditions with 2 trials each, giving a total of 8 trials. We're trying to determine the mean $\mu$ and variance $\sigma$ for each trial. Let 
-$$ \mu_i = \beta_0 + X_i^2 \beta_1 + X_i^3 \beta_2 + X_i^4 \beta_2 $$
-for trial $i$, where $X^j$ is a dummy coded variable for condition $j$. We can implement this with the following code:
+$$
+\mu_i = \beta_0 + X_i^2 \beta_1 + X_i^3 \beta_2 + X_i^4 \beta_2
+$$
+for trial $$i$$, where $$X^j$$ is a dummy coded variable for condition $$j$$. We can implement this with the following code:
 <pre><code class="R">
-# Create a dummy coded design matrix
-# The matrix is set up with an intercept, 3 columns for the increments to mu, and a final intercept for sigma.
+# We'll use an intercept and 3 dummy coded variables to represent how mu changes across
+# trials. For sigma, we'll use an intercept, since it does not change across trials.
 # Hence, we have a 8 x 5 design matrix.
 X = diag(4)
 X = rbind( X, X )
