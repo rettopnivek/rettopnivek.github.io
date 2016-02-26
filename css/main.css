@@ -6,7 +6,7 @@ body {
 div {
     border: 10px black;
     padding:35px;
-    background: rgb(230, 230, 230);
+    background: rgb(230, 240, 240);
     background-clip: border-box;
 }
 nav ul, footer ul {
