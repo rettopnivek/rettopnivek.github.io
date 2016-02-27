@@ -22,13 +22,16 @@
 }
 #footer {
     font-family:'Helvetica', 'Arial', 'Sans-Serif';
-    background-color:rgb(220,220,220);
+    background-color:rgb(240,240,240);
     color:rgb(100,100,100);
     clear:both;
     text-align:center;
     padding:5px;
     border-top: 1px solid #d5d5d5;
     font-size: .8em;
+}
+body {
+    background-color:rgb(240,240,240);
 }
 a {
     text-decoration: none;
