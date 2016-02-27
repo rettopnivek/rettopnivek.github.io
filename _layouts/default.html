@@ -1,62 +1,32 @@
 <!DOCTYPE html>
-	<html>
-		<head>
-			<!-- <title>{{ page.title }}</title> -->
-			<!-- link to main stylesheet -->
-			<link rel="stylesheet" type="text/css" href="/css/main.css">
-			<!--Add Highlight.js https://highlightjs.org/download/ -->
-                        <link rel="stylesheet" href="http://rettopnivek.github.io/highlights/styles/default.css">
-                        <script src="http://rettopnivek.github.io/highlights/highlight.pack.js"></script>
-                        <!-- Using Highight.js https://highlightjs.org/usage/-->
-                        <script>
-                                hljs.initHighlightingOnLoad();
-                        </script>
-                        <!-- Style for banner -->
-                                                        <!-- 
-                                div#banner-content { 
-                                        width: 800px; 
-                                        margin: 0 auto; 
-                                        padding: 10px; 
-                                        border: 1px solid #000;
-                                }
-                                div#main-content { 
-                                        padding-top: 70px;
-                                } -->
-                        <style type="text/css" media="screen">
-                                * {
-                                        margin: 0; 
-                                        padding: 5px;
-                                }
-                                div#banner { 
-                                        position: absolute; 
-                                        top: 0; 
-                                        left: 0; 
-                                        background-color: rgb(140,140,140); 
-                                        width: 100%; 
-                                }
-                        </style>
-		</head>
-		<body>
-			<!-- Banner -->
-			<div id="banner">
-                        </div>
-			<nav>
-	    		<ul>
-	        		<li><a href="/">Home</a></li>
-	        		<li><a href="/cv">CV</a></li>
-	        		<li><a href="/r_tips">R tips</a></li>
-	    		</ul>
-			</nav>
-			<div class="container">
-			
-			{{ content }}
-			
-			</div><!-- /.container -->
-			<footer>
-	    		<ul>
-	        		<li><a href="mailto:kevin.w.potter@gmail.com">email</a></li>
-	        		<li><a href="https://github.com/rettopnivek">github.com/rettopnivek</a></li>
-				</ul>
-			</footer>
-		</body>
-	</html>
+<html>
+        <head>
+                <!-- link to main stylesheet -->
+		<link rel="stylesheet" type="text/css" href="/css/main.css">
+                <!--Add Highlight.js https://highlightjs.org/download/ -->
+                <link rel="stylesheet" href="http://rettopnivek.github.io/highlights/styles/default.css">
+                <script src="http://rettopnivek.github.io/highlights/highlight.pack.js"></script>
+                <!-- Using Highight.js https://highlightjs.org/usage/-->
+                <script>
+                        hljs.initHighlightingOnLoad();
+                </script>
+        </head>
+        <body>
+                <div id="header">
+                        <!-- <h1>{{ page.title }}</h1> -->
+                        <h1>Kevin Potter</h1>
+                </div>
+                <div id="nav">
+	                <li><a href="/">Home</a></li><br>
+	        	<li><a href="/cv">CV</a></li><br>
+	        	<li><a href="/r_tips">Code examples</a></li>
+	        </div>
+                <div id="section">
+                	{{ content }}
+                </div>
+                <div id="footer">
+	        	<li><a href="mailto:kevin.w.potter@gmail.com">email</a></li>
+	        	<li><a href="https://github.com/rettopnivek">github.com/rettopnivek</a></li>
+                </div>
+        </body>
+</html>
