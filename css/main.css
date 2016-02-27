@@ -10,13 +10,13 @@
     line-height:30px;
     background-color:rgb(220,220,220);
     height:300px;
-    width:10%;
+    width:80px;
     float:left;
     padding:5px;	      
 }
 #section {
     margin: 60px auto;
-    width: 70%;
+    width: 400px;
     float:right;
     padding:10px;
     background-color:rgb(240,240,240);
