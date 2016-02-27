@@ -33,8 +33,11 @@
 body {
     background-color:rgb(220,220,220);
 }
+li {
+    list-style-type:none;
+}
+}
 a {
-    list-style:none;
     text-decoration: none;
     color: rgb(100, 100, 100);
 }
