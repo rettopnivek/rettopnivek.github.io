@@ -55,6 +55,7 @@ body {
     font-size: 1.0em;
     color:rgb(125,125,125);
 }
+/* Link properties */
 li {
     /* Disable bullet point preceding link */
     list-style-type:none;
@@ -72,12 +73,21 @@ a:visited {
     text-decoration: none;
     color:rgb(125,125,125);
 }
+/* Header properties */
 h1 {
     font-size: 3em;
     font-family:'Helvetica', 'Arial', 'Sans-Serif';
 }
+/* Paragraph properties */
 p {
     font-size: 1.5em;
     line-height: 1.4em;
     color: #333;
+}
+/* Code for combining left and right justified text */
+.alignleft {
+	float: left;
+}
+.alignright {
+	float: right;
 }
