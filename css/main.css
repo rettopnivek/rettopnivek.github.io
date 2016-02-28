@@ -16,7 +16,6 @@ html, body {
 /* Navigation bar */
 #nav {
     font-family:'Helvetica', 'Arial', 'Sans-Serif';
-    /*text-align:center;*/
     /* Set spacing between lines */
     line-height:15px;
     background-color:rgb(220,220,220);
@@ -48,7 +47,8 @@ html, body {
     background-color:rgb(240,240,240);
     color:rgb(100,100,100);
     display: inline;
-    margin-right: 20px;
+    text-align:center;
+    /* margin-right: 20px; */
     padding:5px;
     font-size: 1.0em;
 }
