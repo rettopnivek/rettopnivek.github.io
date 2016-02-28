@@ -1,15 +1,19 @@
+/* Set html and body to fill entire screen */
 html, body {
+    background-color:rgb(240,240,240);
     height: 100%;
 }
 .fill { 
     min-height: 100%;
 }
+/* Top bar */
 #header {
     background-color:black;
     color:white;
     text-align:center;
     padding:5px;
 }
+/* Navigation bar */
 #nav {
     font-family:'Helvetica', 'Arial', 'Sans-Serif';
     /*text-align:center;*/
@@ -20,6 +24,7 @@ html, body {
     float:left;
     padding:10px;
 }
+/* Main content */
 #section {
     margin: 60px auto;
     width: 70%;
@@ -27,21 +32,26 @@ html, body {
     padding:10px;
     background-color:rgb(240,240,240);
 }
+/* Footer at bottom of screen */
 #footer {
     font-family:'Helvetica', 'Arial', 'Sans-Serif';
+    /* Line dividing footer */
     border-top: 1px solid #d5d5d5;
+    /* Set footer to float */
+    position: fixed; 
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 10px;
     background-color:rgb(240,240,240);
     color:rgb(100,100,100);
-    clear:both;
     display: inline;
     margin-right: 20px;
     padding:5px;
     font-size: .8em;
 }
-body {
-    background-color:rgb(240,240,240);
-}
 li {
+    /* Disable bullet point preceding link */
     list-style-type:none;
 }
 a {
@@ -49,9 +59,11 @@ a {
     color: rgb(100, 100, 100);
 }
 a:hover {
+    /* Hovering over a link makes it underlined */
     text-decoration: underline;
 }
 a:visited {
+    /* Disable the setting of a link to purple if previously visited */
     text-decoration: none;
     color:rgb(100,100,100);
 }
