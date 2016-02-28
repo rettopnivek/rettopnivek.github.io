@@ -7,9 +7,9 @@
 #nav {
     font-family:'Helvetica', 'Arial', 'Sans-Serif';
     text-align:center;
-    line-height:30px;
+    line-height:20px;
     background-color:rgb(220,220,220);
-    height:100%;
+    height:800px;
     width:15%;
     float:left;
     padding:5px;	      
@@ -31,7 +31,7 @@
     font-size: .8em;
 }
 body {
-    background-color:rgb(220,220,220);
+    background-color:rgb(240,240,240);
 }
 li {
     list-style-type:none;
