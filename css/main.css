@@ -4,6 +4,7 @@ body {
 /* Top bar */
 #header {
     background-color:black;
+    height:100px;
     color:white;
     text-align:center;
     padding:5px;
