@@ -91,3 +91,7 @@ p {
 .alignright {
 	float: right;
 }
+/* Code to create indented text */
+.tab { 
+	margin-left: 40px;
+}
