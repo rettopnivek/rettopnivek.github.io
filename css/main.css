@@ -3,10 +3,15 @@ body {
 }
 /* Top bar */
 #header {
+    /* Set header to float */
+    position: fixed; 
+    top: 0;
+    left: 0;
+    right: 0;
+    /* Characterisitics */
     background-color:black;
-    height:100px;
+    height:80px;
     color:white;
-    text-align:center;
     padding:5px;
 }
 /* Navigation bar */
@@ -22,7 +27,7 @@ body {
 }
 /* Main content */
 #section {
-    margin: 60px auto;
+    margin: 30px auto;
     width: 65%;
     float:left;
     padding:10px;
@@ -40,8 +45,8 @@ body {
     right: 0;
     /* Footer aspects */
     height: 15px;
-    background-color:rgb(220,220,220);
-    color:rgb(50,50,50);
+    background-color:black;
+    /* color:rgb(100,100,100); */
     display: inline;
     text-align:center;
     /* margin-right: 20px; */
@@ -54,7 +59,7 @@ li {
 }
 a {
     text-decoration: none;
-    color: rgb(100, 100, 100);
+    color: rgb(125, 125, 125);
 }
 a:hover {
     /* Hovering over a link makes it underlined */
@@ -63,7 +68,7 @@ a:hover {
 a:visited {
     /* Disable the setting of a link to purple if previously visited */
     text-decoration: none;
-    color:rgb(100,100,100);
+    color:rgb(125,125,125);
 }
 h1 {
     font-size: 3em;
