@@ -19,6 +19,7 @@ body {
     font-family:'Helvetica', 'Arial', 'Sans-Serif';
     /* Set spacing between lines */
     line-height:15px;
+    margin-top:80px;
     background-color:rgb(220,220,220);
     height:1600px;
     width:10%;
@@ -27,7 +28,7 @@ body {
 }
 /* Main content */
 #section {
-    margin: 30px auto;
+    margin: 50px auto;
     width: 65%;
     float:left;
     padding:10px;
@@ -52,6 +53,7 @@ body {
     /* margin-right: 20px; */
     padding:5px;
     font-size: 1.0em;
+    color:rgb(125,125,125);
 }
 li {
     /* Disable bullet point preceding link */
