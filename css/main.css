@@ -6,13 +6,13 @@
 }
 #nav {
     font-family:'Helvetica', 'Arial', 'Sans-Serif';
-    text-align:center;
+    /*text-align:center;*/
     line-height:20px;
     background-color:rgb(220,220,220);
     height:100%;
     width:10%;
     float:left;
-    padding:5px;	      
+    padding:10px;
 }
 #section {
     margin: 60px auto;
