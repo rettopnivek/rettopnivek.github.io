@@ -91,7 +91,9 @@ p {
 .alignright {
 	float: right;
 }
-/* Code to create indented text */
-.tab { 
+/* Code to format name at top of page */
+.nameDrop {
 	margin-left: 40px;
+	font-size: 3em;
+	font-family: 'Impact','Charcoal','sans-serif';
 }
