@@ -93,6 +93,7 @@ p {
 }
 /* Code to format name at top of page */
 .nameDrop {
+	float: left;
 	margin-left: 40px;
 	font-size: 3em;
 	font-family: 'Impact','Charcoal','sans-serif';
