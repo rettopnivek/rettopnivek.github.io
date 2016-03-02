@@ -52,13 +52,13 @@ This is a very useful method to handle a large number of conditions when creatin
 
 ### Example
 
-Suppose we have 4 conditions with 2 trials each, giving a total of 8 trials. We're trying to determine the mean $\mu$ and standard deviation $\sigma$ for each trial. Let 
+Suppose we have 4 conditions with 2 trials each, giving a total of 8 trials. We're trying to determine the mean $$\mu$$ and standard deviation $$\sigma$$ for each trial. Let 
 
 $$
 \mu_i = \beta_0 + X_i^2 \beta_1 + X_i^3 \beta_2 + X_i^4 \beta_2
 $$
 
-for trial $i$, where $X^j$ is a dummy coded variable for condition $j$. We can implement this with the following code:
+for trial $$i$$, where $$X^j$$ is a dummy coded variable for condition $$j$$. We can implement this with the following code:
 <pre><code class="R">
 # We'll use an intercept and 3 dummy coded variables to represent how mu changes across
 # trials. For sigma, we'll use an intercept, since it does not change across trials.
