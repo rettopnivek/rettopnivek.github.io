@@ -109,6 +109,6 @@ a:visited {
 /* Paragraph properties */
 p {
     font-size: 1.5em;
-    line-height: 1.4em;
+    line-height: 1em;
     color: black;
 }
