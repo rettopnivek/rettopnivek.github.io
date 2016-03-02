@@ -44,7 +44,7 @@ header {
 }
 /* Styling for section on left */
 .sectionLeft {
-	margin-top: 80px;
+	margin-top: 70px;
 	background-color:rgb(220,220,220);
         height:1600px;
         width: 10%;
@@ -53,7 +53,7 @@ header {
 }
 /* Styling for section on right */
 .sectionRight {
-	margin-top: 80px;
+	margin-top: 70px;
 	background-color:rgb(220,220,220);
         height:1600px;
         width: 10%;
