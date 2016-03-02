@@ -1,45 +1,79 @@
 body {
     background-color:rgb(240,240,240);
 }
-/* Top bar */
-#header {
-    /* Set header to float */
+/* Banner at top of screen with name/navigation */
+header {
+    /* Set banner to float */
     position: fixed; 
     top: 0;
     left: 0;
     right: 0;
     /* Characterisitics */
     background-color:black;
-    height:80px;
     color:white;
-    margin-top:5px;
+    height:80px;
+    margin-top:10px;
     margin-bottom:10px;
 }
-/* Navigation bar */
-#nav {
-    font-family:'Helvetica', 'Arial', 'Sans-Serif';
-    /* Set spacing between lines */
-    line-height:15px;
-    margin-top:80px;
-    background-color:rgb(220,220,220);
-    height:1600px;
-    width:10%;
-    float:left;
-    padding:10px;
+/* Code to format name at top of page */
+.nameDrop {
+	float: left;
+	margin-left: 40px;
+	font-size: 2.5em;
+	font-family: 'Impact','Charcoal','sans-serif';
+}
+/* Navigation menu */
+.navMenu {
+	font-size: 1.5em;
+	font-family: 'Impact','Charcoal','sans-serif';
+	/* Remove bullet points */
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+/* style for links in list */
+.liList {
+	float: right;
+}
+li a {
+	display: block;
+	padding: 8px;
+	color: white;
+}
+/* Styling for section on left */
+.sectionLeft {
+	margin-top: 80px;
+	background-color:rgb(220,220,220);
+        height:1600px;
+        width: 10%;
+        float:left;
+        padding:10px;
+}
+/* Styling for section on right */
+.sectionRight {
+	margin-top: 80px;
+	background-color:rgb(220,220,220);
+        height:1600px;
+        width: 10%;
+        float: right;
+        padding:10px;
+        /* Set spacing between lines */
+        /* line-height:15px; */
 }
 /* Main content */
-#section {
-    margin: 50px auto;
-    width: 65%;
-    float:left;
-    padding:10px;
-    background-color:rgb(240,240,240);
+section {
+	font-family:'Helvetica', 'Arial', 'Sans-Serif'; */
+	margin-top: 80px;
+	margin-left: 5px;
+	margin-right: 5px;
+	width: 70%;
+	float:left;
+	padding:10px;
+	background-color:rgb(240,240,240);
 }
 /* Footer at bottom of screen */
 #footer {
-    font-family:'Helvetica', 'Arial', 'Sans-Serif';
-    /* Line dividing footer */
-    /* border-top: 1px solid #d5d5d5; */
     /* Set footer to float */
     position: fixed; 
     bottom: 0;
@@ -48,13 +82,6 @@ body {
     /* Footer aspects */
     height: 15px;
     background-color:black;
-    /* color:rgb(100,100,100); */
-    display: inline;
-    text-align:center;
-    /* margin-right: 20px; */
-    padding:5px;
-    font-size: 1.0em;
-    color:rgb(125,125,125);
 }
 /* Link properties */
 li {
@@ -84,34 +111,4 @@ p {
     font-size: 1.5em;
     line-height: 1.4em;
     color: #333;
-}
-/* Code for combining left and right justified text */
-.alignleft {
-	float: left;
-}
-.alignright {
-	float: right;
-}
-/* Code to format name at top of page */
-.nameDrop {
-	float: left;
-	margin-left: 40px;
-	font-size: 2.5em;
-	font-family: 'Impact','Charcoal','sans-serif';
-}
-/* Navigation bar */
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-}
-li {
-    float: right;
-}
-li a {
-    display: block;
-    padding: 10px;
-    color:white;
-    background-color: rgb(0,0,0);
 }
