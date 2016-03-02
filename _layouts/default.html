@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
         <head>
+        	<!-- page title -->
+        	<title>{{ page.title }}</title>
                 <!-- link to main stylesheet -->
 		<link rel="stylesheet" type="text/css" href="/css/main.css">
                 <!--Add Highlight.js https://highlightjs.org/download/ -->
@@ -12,22 +14,25 @@
                 </script>
         </head>
         <body>
-                <div id="header">
-                        <h1 class="nameDrop"><font color='white'>Kevin W. Potter</font></h1>
-                        <ul>
-                        	<li><a href="/"><font color='white'>Home</a></li>
-                        	<li><a href="/cv"><font color='white'>CV</a></li>
-                        	<li><a href="/r_tips"><font color='white'>Code examples</a></li>
-                        	<a href="https://github.com/rettopnivek"><font color='white'>Github</a></li>
-                        	<li><a href="mailto:kevin.w.potter@gmail.com"><font color='white'>Contact</a>
+        	<header>
+        		<h1 class="nameDrop"><font color='white'>Kevin W. Potter</font></h1>
+                        <div style="clear: left;"></div>
+                        <ul class="navMenu">
+                        	<li class="liList"><a href="/"><font color='white'>Home</a></li>
+                        	<li class="liList"><a href="/cv"><font color='white'>CV</a></li>
+                        	<li class="liList"><a href="/r_tips"><font color='white'>Code examples</a></li>
+                        	<li class="liList"></li><a href="https://github.com/rettopnivek"><font color='white'>Github</a></li>
+                        	<li class="liList"><a href="mailto:kevin.w.potter@gmail.com"><font color='white'>Contact</a>
                         </ul>
-                </div>
-                <div style="clear: both;"></div>
-                <div id="nav">
-\	        </div>
-                <div id="section">
-                	{{ content }}
-                </div>
+                        <div style="clear: right;"></div>
+        	</header>
+        	<section class="sectionLeft">
+        	</section>
+        	<section>
+        		{{ content }}
+        	</section>
+        	<section class="sectionRight">
+        	</section>
                 <div id="footer">
                 </div>
         </body>
