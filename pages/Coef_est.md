@@ -3,7 +3,7 @@ layout: page
 ---
 
 ## Matrix multiplication for weighting coefficients
-Often we want to efficiently determine the sum of a set of independent variables weighted by a set of coefficients across a large number of trials (e.g. linear regression). Here is a RcppArmadillo function to carry out such an operation.
+Often we want to efficiently determine the sum of a set of independent variables weighted by a set of coefficients across a large number of trials (such as what is done in linear regression). Here is a RcppArmadillo function to carry out such an operation.
 <pre><code class="R">
 library(Rcpp)
 cppFunction('
@@ -48,13 +48,17 @@ cppFunction('
   ', depends = "RcppArmadillo"
 )
 </code></pre>  
-This is a very useful method to handle a large number of conditions when creating your own likelihood function. However, it isn't intuitive on how to use this function, so here's an example.
+This is a very useful method to handle a large number of conditions when creating your own likelihood function. However, it isn't intuitive on how to use this function. An example would be helpful.
+
 ### Example
-Suppose we have 4 conditions with 2 trials each, giving a total of 8 trials. We're trying to determine the mean $\mu$ and variance $\sigma$ for each trial. Let 
+
+Suppose we have 4 conditions with 2 trials each, giving a total of 8 trials. We're trying to determine the mean \( mu \) and standard deviation \( sigma \) for each trial. Let 
+
 $$
 \mu_i = \beta_0 + X_i^2 \beta_1 + X_i^3 \beta_2 + X_i^4 \beta_2
 $$
-for trial $$i$$, where $$X^j$$ is a dummy coded variable for condition $$j$$. We can implement this with the following code:
+
+for trial \(i\), where \(X^j\) is a dummy coded variable for condition \(j\). We can implement this with the following code:
 <pre><code class="R">
 # We'll use an intercept and 3 dummy coded variables to represent how mu changes across
 # trials. For sigma, we'll use an intercept, since it does not change across trials.
