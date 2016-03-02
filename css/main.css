@@ -19,6 +19,7 @@ header {
 .nameDrop {
 	float: left;
 	margin-left: 40px;
+	margin-top: 0px;
 	font-size: 2.5em;
 	font-family: 'Impact','Charcoal','sans-serif';
 }
@@ -26,6 +27,7 @@ header {
 .navMenu {
 	font-size: 1.5em;
 	font-family: 'Impact','Charcoal','sans-serif';
+	margin-top: 0px;
 	/* Remove bullet points */
 	list-style-type: none;
 	margin: 0;
@@ -63,8 +65,8 @@ li a {
 }
 /* Main content */
 section {
-	font-family:'Helvetica', 'Arial', 'Sans-Serif'; */
-	margin-top: 80px;
+	font-family:'Helvetica', 'Arial', 'Sans-Serif';
+	margin-top: 160px;
 	margin-left: 5px;
 	margin-right: 5px;
 	width: 70%;
