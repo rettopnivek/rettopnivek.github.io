@@ -38,7 +38,7 @@ header {
 .liList {
 	float: right;
 }
-.aNav {
+.liList a {
 	display: block;
 	padding: 8px;
 	color: white;
