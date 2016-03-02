@@ -12,22 +12,21 @@ header {
     background-color:black;
     color:white;
     height:80px;
-    margin-top:10px;
-    margin-bottom:10px;
 }
 /* Code to format name at top of page */
 .nameDrop {
 	float: left;
 	margin-left: 40px;
-	margin-top: 0px;
+	margin-top: 5px;
 	font-size: 2.5em;
 	font-family: 'Impact','Charcoal','sans-serif';
+	color: white;
 }
 /* Navigation menu */
 .navMenu {
 	font-size: 1.5em;
 	font-family: 'Impact','Charcoal','sans-serif';
-	margin-top: 0px;
+	margin-top: 5px;
 	/* Remove bullet points */
 	list-style-type: none;
 	margin: 0;
@@ -38,19 +37,10 @@ header {
 .liList {
 	float: right;
 }
-li a {
+.aNav {
 	display: block;
 	padding: 8px;
 	color: white;
-}
-h1 {
-	color: black;
-}
-h2 {
-	color: black;
-}
-h3 {
-	color: black;
 }
 /* Styling for section on left */
 .sectionLeft {
@@ -82,6 +72,7 @@ section {
 	float:left;
 	padding:10px;
 	background-color:rgb(240,240,240);
+	color: black;
 }
 /* Footer at bottom of screen */
 #footer {
@@ -112,14 +103,9 @@ a:visited {
     text-decoration: none;
     color:rgb(125,125,125);
 }
-/* Header properties */
-h1 {
-    font-size: 3em;
-    font-family:'Helvetica', 'Arial', 'Sans-Serif';
-}
 /* Paragraph properties */
 p {
     font-size: 1.5em;
     line-height: 1.4em;
-    color: #333;
+    color: black;
 }
