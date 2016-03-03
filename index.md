@@ -3,4 +3,8 @@ layout: default
 title: Kevin Potter
 ---
 
-I'm a quantitative psychologist. I received my Ph.D. from Ohio State University in 2015. My research primarily focuses on modeling simple choices and their response times, but I am also interested in Psychometrics and Bayesian statistics.
+Simple choices and their response times have been stalwart measures in psychological research. They have been used to gain insight into memory, vision, clinical disorders, social biases, and even consciousness.
+
+However, when studying cognition and the brain, even a very simple choice, such as pressing a button to indicate whether an arrow is pointing to the left or right, is hard to decode. A complex stream of neural activity leads to the final simple act of hitting a key to indicate the final choice.
+
+As a [quantitative psychologist](http://www.apa.org/research/tools/quantitative/), my research primarily focuses on building and applying mathematical models that can describe these simple choices and response times. I am also interested in making these models easier for psychologists in other fields to apply to their own work.
