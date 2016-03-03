@@ -108,8 +108,8 @@ a:visited {
 }
 /* Paragraph properties */
 p {
-	font-size: 1em;
+	font-size: 1.2em;
 	line-height: 1.4em;
 	color: black;
-	margin: 1em;
+	margin: .2em;
 }
