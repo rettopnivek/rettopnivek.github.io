@@ -106,9 +106,6 @@ a:visited {
     text-decoration: none;
     color:rgb(125,125,125);
 }
-.aWhite {
-	color: rgb(250,250,250);
-}
 /* Paragraph properties */
 p {
 	font-size: 1.4em;
