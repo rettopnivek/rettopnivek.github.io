@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en" itemscope itemtype="http://schema.org/Person">
+<head>
+  <meta charset="utf-8">
+  <!-- Site Meta Data -->
+  <title> Kevin W. Potter |  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Kevin W. Potter">
+
+  <link rel="shortcut icon" href="">
+
+  <!-- schema.org -->
+  <meta itemprop="name" content="Kevin W. Potter">
+  <meta itemprop="image" content="Professional_picture.JPG">
+  <meta itemprop="description" content="">
+
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+  <!-- Style Meta Data -->
+  <link rel="stylesheet" href="../../theme/css/style.css" type="text/css" />
+  <link rel="stylesheet" href="../../theme/css/pygments.css" type="text/css" />
+
+
+  <!-- Feed Meta Data -->
+
+  <!-- Twitter Feed -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="">
+  <meta name="twitter:image" content="">
+
+<meta name="twitter:creator" content="">
+<meta name="twitter:url" content="../../posts/hazard-function/">
+<meta name="twitter:title" content="Kevin W. Potter ~ Hazard functions in R">
+<!-- <meta name="twitter:description" content="<p>A hazard function gives the likelihood of an event given that it has yet to occur. Hazard functions can be quite informative in distinguishing between response time distributions, but their use is hindered by the fact that they are quite hard to empirically estimate from a set of data. Here, I use some R code to gain some insight into hazard functions, and I also explore an algorithm suggested by Luce (1986) to obtain a smoothed estimate of the hazard function for a set of response times. </p>
+<p>For my running ...</p>"> -->
+
+<!-- Facebook Meta Data -->
+<meta property="og:title" content="Kevin W. Potter ~ Hazard functions in R" />
+<!-- <meta property="og:description" content="<p>A hazard function gives the likelihood of an event given that it has yet to occur. Hazard functions can be quite informative in distinguishing between response time distributions, but their use is hindered by the fact that they are quite hard to empirically estimate from a set of data. Here, I use some R code to gain some insight into hazard functions, and I also explore an algorithm suggested by Luce (1986) to obtain a smoothed estimate of the hazard function for a set of response times. </p>
+<p>For my running ...</p>" /> -->
+<meta property="og:image" content="" />
+</head>
+
+<body>
+  <!-- Site navigation list -->
+    <nav>
+      <h1 id = "author"> <a href="../.." id="home"> Kevin W. Potter </a> </h1>
+      <ul id = "nav_list" class="list-bare">
+          <li>
+            <a class="nav_link" href="../../posts/"> Blog </a>
+          </li>
+            <li>
+              <a class="nav_link" href="../../pages/presentations.html">Presentations</a>
+            </li>
+            <li>
+              <a class="nav_link" href="../../pages/publications.html">Publications</a>
+            </li>
+      </ul>
+    </nav>
+
+  <!-- Content -->
+  <div id = "container">
+  <div class = "content">
+
+    <div class="all-posts">
+      <a href="../../posts/">&#11013; View all posts</a>
+    </div>
+
+    <article>
+        <h2 class="post_title post_detail"><a href="../../posts/hazard-function/" rel="bookmark">Hazard functions in R</a></h2>
+        <div class="entry-content blog-post">
+            <p>A hazard function gives the likelihood of an event given that it has yet to occur. Hazard functions can be quite informative in distinguishing between response time distributions, but their use is hindered by the fact that they are quite hard to empirically estimate from a set of data. Here, I use some R code to gain some insight into hazard functions, and I also explore an algorithm suggested by Luce (1986) to obtain a smoothed estimate of the hazard function for a set of response times. </p>
+<p>For my running example, I will focus on a gamma distribution.</p>
+<div class="highlight"><pre><span></span><span class="c1"># Define generating parameters (shape and scale parameters)</span>
+gp <span class="o">=</span> <span class="kt">c</span><span class="p">(</span> <span class="m">2</span><span class="p">,</span> <span class="m">1</span><span class="o">/</span><span class="m">3</span> <span class="p">)</span>
+</pre></div>
+
+
+<p>Given our generating parameter values, we get the following PDF and CDF curves:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Define a sequence of times</span>
+x <span class="o">=</span> <span class="kp">seq</span><span class="p">(</span> <span class="m">0</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> length <span class="o">=</span> <span class="m">1000</span> <span class="p">)</span>
+
+<span class="c1"># Calculate the density function</span>
+d <span class="o">=</span> dgamma<span class="p">(</span> x<span class="p">,</span> shape <span class="o">=</span> gp<span class="p">[</span><span class="m">1</span><span class="p">],</span> scale <span class="o">=</span> gp<span class="p">[</span><span class="m">2</span><span class="p">]</span> <span class="p">)</span>
+
+<span class="c1"># Calculate the distribution function</span>
+D <span class="o">=</span> pgamma<span class="p">(</span> x<span class="p">,</span> shape <span class="o">=</span> gp<span class="p">[</span><span class="m">1</span><span class="p">],</span> scale <span class="o">=</span> gp<span class="p">[</span><span class="m">2</span><span class="p">]</span> <span class="p">)</span>
+
+<span class="c1"># Plot the resulting curves</span>
+layout<span class="p">(</span> <span class="kp">cbind</span><span class="p">(</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span> <span class="p">)</span> <span class="p">)</span>
+plot<span class="p">(</span> <span class="kt">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">2</span><span class="p">),</span> <span class="kt">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1.5</span><span class="p">),</span> type <span class="o">=</span> <span class="s">&#39;n&#39;</span><span class="p">,</span> bty <span class="o">=</span> <span class="s">&#39;l&#39;</span><span class="p">,</span> 
+      xlab <span class="o">=</span> <span class="s">&#39;Time (s)&#39;</span><span class="p">,</span> ylab <span class="o">=</span> <span class="s">&#39;Density&#39;</span> <span class="p">)</span>
+lines<span class="p">(</span> x<span class="p">,</span> d <span class="p">)</span>
+plot<span class="p">(</span> <span class="kt">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">2</span><span class="p">),</span> <span class="kt">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">),</span> type <span class="o">=</span> <span class="s">&#39;n&#39;</span><span class="p">,</span> bty <span class="o">=</span> <span class="s">&#39;l&#39;</span><span class="p">,</span> 
+      xlab <span class="o">=</span> <span class="s">&#39;Time (s)&#39;</span><span class="p">,</span> ylab <span class="o">=</span> <span class="s">&#39;CDF&#39;</span> <span class="p">)</span>
+lines<span class="p">(</span> x<span class="p">,</span> D <span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="Alt Text" src="../../img/gamma_pdf_and_cdf.png" /></p>
+<p>The hazard function gives the likelihood of an event occurring at time t given that it has failed to occur prior to t. This, then, is the density for t renormalized by the failure of t to have previously occurred, or one minus the distribution function (the log survivor function):</p>
+<div class="highlight"><pre><span></span>H <span class="o">=</span> d<span class="o">/</span><span class="p">(</span><span class="m">1</span><span class="o">-</span>D<span class="p">)</span>
+
+<span class="c1"># Plot the resulting hazard function</span>
+plot<span class="p">(</span> <span class="kt">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">2</span><span class="p">),</span> <span class="kt">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">3</span><span class="p">),</span> type <span class="o">=</span> <span class="s">&#39;n&#39;</span><span class="p">,</span> bty <span class="o">=</span> <span class="s">&#39;l&#39;</span><span class="p">,</span> 
+      xlab <span class="o">=</span> <span class="s">&#39;Time (s)&#39;</span><span class="p">,</span> ylab <span class="o">=</span> <span class="s">&#39;Hazard function&#39;</span> <span class="p">)</span>
+lines<span class="p">(</span> x<span class="p">,</span> H <span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="Alt Text" src="../../img/gamma_hazard_f.png" /></p>
+<p>An alternate way to specify the hazard function is that it is the negative of the derivative of the log survivor function. This implies that if we calculate the log survivor function over a set of times, and then calculate the difference between the ith observation and the (i-1)th observation for both vectors, we can estimate the derivative via the rise over run equation and see if we obtain our hazard function once again.</p>
+<div class="highlight"><pre><span></span>lSF <span class="o">=</span> <span class="kp">log</span><span class="p">(</span> <span class="m">1</span> <span class="o">-</span> D <span class="p">)</span> <span class="c1"># Log survivor function</span>
+H <span class="o">=</span> <span class="o">-</span><span class="kp">diff</span><span class="p">(</span> lSF <span class="p">)</span> <span class="o">/</span> <span class="kp">diff</span><span class="p">(</span> x <span class="p">)</span> <span class="c1"># Estimate slope</span>
+
+<span class="c1"># Overlay new estimate of hazard function on previous plot</span>
+lines<span class="p">(</span> x<span class="p">[</span><span class="m">-1</span><span class="p">],</span> H<span class="p">,</span> col <span class="o">=</span> <span class="s">&#39;red&#39;</span><span class="p">,</span> lty <span class="o">=</span> <span class="m">2</span> <span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="Alt Text" src="../../img/gamma_hazard_f_2.png" /></p>
+<p>To estimate the hazard function from a set of observations, I will implement equations 4.1 and 4.2 from Luce (1986), which is an algorithm proposed by Miller and Singpurwalla (1977):</p>
+<div class="highlight"><pre><span></span>eq_4.2 <span class="o">=</span> <span class="kr">function</span><span class="p">(</span> n<span class="p">,</span> k<span class="p">,</span> Z <span class="p">)</span> <span class="p">{</span>
+
+  Z_k <span class="o">=</span> Z<span class="p">[</span>k<span class="p">]</span>
+  <span class="kr">if</span> <span class="p">(</span>k <span class="o">==</span> <span class="m">1</span><span class="p">)</span> Z_km1 <span class="o">=</span> <span class="m">0</span> <span class="kr">else</span> Z_km1 <span class="o">=</span> Z<span class="p">[</span>k<span class="m">-1</span><span class="p">]</span>
+
+  out <span class="o">=</span> <span class="p">(</span> n <span class="o">-</span> k <span class="o">+</span> <span class="m">1</span> <span class="p">)</span> <span class="o">*</span> <span class="p">(</span> Z_k <span class="o">-</span> Z_km1 <span class="p">)</span>
+
+  <span class="kr">return</span><span class="p">(</span> out <span class="p">)</span>
+<span class="p">}</span>
+
+eq_4.1 <span class="o">=</span> <span class="kr">function</span><span class="p">(</span>i<span class="p">,</span>j<span class="p">,</span>n<span class="p">,</span>Z<span class="p">)</span> <span class="p">{</span>
+
+  beg <span class="o">=</span> i <span class="o">-</span> j <span class="o">+</span> <span class="m">1</span><span class="p">;</span> <span class="kr">if</span> <span class="p">(</span>beg <span class="o">&lt;</span> <span class="m">1</span><span class="p">)</span> <span class="p">{</span> beg <span class="o">=</span> <span class="m">1</span><span class="p">;</span> j <span class="o">=</span> i <span class="p">}</span>
+  denom <span class="o">=</span> <span class="kt">numeric</span><span class="p">(</span> i <span class="o">-</span> beg <span class="p">)</span>
+
+  inc <span class="o">=</span> <span class="m">1</span><span class="p">;</span>
+  <span class="kr">for</span> <span class="p">(</span> k <span class="kr">in</span> beg<span class="o">:</span>i <span class="p">)</span> <span class="p">{</span> denom<span class="p">[</span>inc<span class="p">]</span> <span class="o">=</span> eq_4.2<span class="p">(</span> n<span class="p">,</span> k<span class="p">,</span> Z <span class="p">);</span> inc <span class="o">=</span> inc <span class="o">+</span> <span class="m">1</span> <span class="p">}</span>
+  out <span class="o">=</span> j<span class="o">/</span><span class="kp">sum</span><span class="p">(</span> denom <span class="p">)</span>
+
+  <span class="kr">return</span><span class="p">(</span> out <span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>To estimate the hazard function using these equations, we specify a set of intervals at which to estimate the hazard function:</p>
+<div class="highlight"><pre><span></span>n <span class="o">=</span> <span class="m">1000</span> <span class="c1"># Number of observations</span>
+X <span class="o">=</span> rgamma<span class="p">(</span> n<span class="p">,</span> shape <span class="o">=</span> gp<span class="p">[</span><span class="m">1</span><span class="p">],</span> scale <span class="o">=</span> gp<span class="p">[</span><span class="m">2</span><span class="p">]</span> <span class="p">)</span> <span class="c1"># Observations</span>
+Z <span class="o">=</span> <span class="kp">sort</span><span class="p">(</span> X <span class="p">)</span> <span class="c1"># Rank-order observations</span>
+q <span class="o">=</span> quantile<span class="p">(</span> Z<span class="p">,</span> prob <span class="o">=</span> <span class="kp">seq</span><span class="p">(</span> <span class="m">.05</span><span class="p">,</span> <span class="m">.95</span><span class="p">,</span> <span class="m">.05</span> <span class="p">),</span><span class="m">1</span><span class="p">)</span> <span class="c1"># Determine quantiles</span>
+<span class="c1"># Determine number of observations less than each quantile</span>
+int <span class="o">=</span> <span class="kp">sapply</span><span class="p">(</span> <span class="kp">q</span><span class="p">,</span> <span class="kr">function</span><span class="p">(</span><span class="kp">q</span><span class="p">)</span> <span class="kp">sum</span><span class="p">(</span> Z <span class="o">&lt;</span> q <span class="p">)</span> <span class="p">)</span> <span class="c1"># These are our intervals for the equation</span>
+int <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span>int<span class="p">,</span>n<span class="m">-1</span><span class="p">)</span> <span class="c1"># Incorporate first and second to last observations</span>
+j <span class="o">=</span> <span class="m">25</span> <span class="c1"># Specify smoothing parameter</span>
+<span class="c1"># Estimate hazard function for each interval</span>
+est_H <span class="o">=</span> <span class="kp">sapply</span><span class="p">(</span> int<span class="p">,</span> eq_4.1<span class="p">,</span> j <span class="o">=</span> j<span class="p">,</span> n <span class="o">=</span> n<span class="p">,</span> Z <span class="o">=</span> Z <span class="p">)</span>
+lines<span class="p">(</span> Z<span class="p">[</span>int<span class="p">],</span> est_H<span class="p">,</span> col <span class="o">=</span> <span class="s">&#39;blue&#39;</span> <span class="p">)</span>
+</pre></div>
+
+
+<p>We can see that the estimate follows the true curve, but is quite jagged. My naive specifications of the intervals and smoothing parameter are clearly not ideal.</p>
+<p><img alt="Alt Text" src="../../img/gamma_hazard_f_3.png" /></p>
+<h3>References</h3>
+<p>Luce, R. D. (1986). <em>Response Times: Their Role in Inferring Elementary Mental Organization</em>. New York, New York: Oxford University Press.</p>
+<p>Miller, D. R. and Singpurwalla, N. D. (1977). Failure rate estimation using random smoothing. <em>National Technical Information Service</em>, No. AD-A040999/5ST.</p>
+        </div>
+
+          <ul class="tags">
+              <li><a href="../../tag/statistics.html">Statistics</a></li>
+              <li><a href="../../tag/code.html">code</a></li>
+          </ul>
+
+        <div class="all-posts">
+          <a href="../../posts/">&#11013; View all posts</a>
+        </div>
+
+        
+    </article>
+  </div>
+
+  <!-- Footer -->
+    <footer>
+      <p>
+        Powered by <a href="http://getpelican.com/">Pelican</a>,
+        which takes great advantage of <a href="http://python.org">Python</a>.<br>
+        Theme <a href="https://github.com/wjhopper/academia-red">academia</a> by <a href="http://hopperlab.com/">Will Hopper</a>.
+        Styled with the help of <a href="http://getskeleton.com/">Skeleton</a>
+      </p>
+    </footer>
+  </div>
+
+
+</body>
+</html>
