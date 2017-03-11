@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en" itemscope itemtype="http://schema.org/Person">
+<head>
+  <meta charset="utf-8">
+  <!-- Site Meta Data -->
+  <title> Kevin W. Potter |  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Kevin W. Potter">
+
+  <link rel="shortcut icon" href="">
+
+  <!-- schema.org -->
+  <meta itemprop="name" content="Kevin W. Potter">
+  <meta itemprop="image" content="Professional_picture.JPG">
+  <meta itemprop="description" content="">
+
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+  <!-- Style Meta Data -->
+  <link rel="stylesheet" href="../../theme/css/style.css" type="text/css" />
+  <link rel="stylesheet" href="../../theme/css/pygments.css" type="text/css" />
+
+
+  <!-- Feed Meta Data -->
+
+  <!-- Twitter Feed -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="">
+  <meta name="twitter:image" content="">
+
+<meta name="twitter:creator" content="">
+<meta name="twitter:url" content="../../posts/mixed-effects/">
+<meta name="twitter:title" content="Kevin W. Potter ~ Mixed effects modeling in R">
+<!-- <meta name="twitter:description" content="<p>Hierarchical generalized linear models provide an extremely powerful set of tools for statistical analysis. Here I provide a very basic example of how to fit these models using the lme4 package in R. Numerous tutorials already exist on this topic, so the other purpose of this post is to expand my understanding of these models by re-fitting them to simulated data. One's understanding of a statistical model is greatly improved when you are able to determine how to go about simulating data and testing parameter recovery for the model ...</p>"> -->
+
+<!-- Facebook Meta Data -->
+<meta property="og:title" content="Kevin W. Potter ~ Mixed effects modeling in R" />
+<!-- <meta property="og:description" content="<p>Hierarchical generalized linear models provide an extremely powerful set of tools for statistical analysis. Here I provide a very basic example of how to fit these models using the lme4 package in R. Numerous tutorials already exist on this topic, so the other purpose of this post is to expand my understanding of these models by re-fitting them to simulated data. One's understanding of a statistical model is greatly improved when you are able to determine how to go about simulating data and testing parameter recovery for the model ...</p>" /> -->
+<meta property="og:image" content="" />
+</head>
+
+<body>
+  <!-- Site navigation list -->
+    <nav>
+      <h1 id = "author"> <a href="../.." id="home"> Kevin W. Potter </a> </h1>
+      <ul id = "nav_list" class="list-bare">
+          <li>
+            <a class="nav_link" href="../../posts/"> Blog </a>
+          </li>
+            <li>
+              <a class="nav_link" href="../../pages/presentations.html">Presentations</a>
+            </li>
+            <li>
+              <a class="nav_link" href="../../pages/publications.html">Publications</a>
+            </li>
+      </ul>
+    </nav>
+
+  <!-- Content -->
+  <div id = "container">
+  <div class = "content">
+
+    <div class="all-posts">
+      <a href="../../posts/">&#11013; View all posts</a>
+    </div>
+
+    <article>
+        <h2 class="post_title post_detail"><a href="../../posts/mixed-effects/" rel="bookmark">Mixed effects modeling in R</a></h2>
+        <div class="entry-content blog-post">
+            <p>Hierarchical generalized linear models provide an extremely powerful set of tools for statistical analysis. Here I provide a very basic example of how to fit these models using the lme4 package in R. Numerous tutorials already exist on this topic, so the other purpose of this post is to expand my understanding of these models by re-fitting them to simulated data. One's understanding of a statistical model is greatly improved when you are able to determine how to go about simulating data and testing parameter recovery for the model.</p>
+<p>For this example, I will focus on a very basic example, a linear model in which the i<sup>th</sup> observation follows a normal distribution.</p>
+<p>First, we need to install and load the package.</p>
+<div class="highlight"><pre><span></span><span class="c1"># install.packages( &#39;lme4&#39; )</span>
+<span class="kn">library</span><span class="p">(</span> lme4 <span class="p">)</span>
+</pre></div>
+
+
+<p>Next, we'll define the structure for the data to be simulated. We will focus on the design for a simple two-factor repeated measures ANOVA. In this design, every subject provides multiple observations for each level of each factor. In other words, this is a completely within-subjects design.</p>
+<div class="highlight"><pre><span></span>Ns <span class="o">=</span> <span class="m">100</span> <span class="c1"># Number of subjects</span>
+No <span class="o">=</span> <span class="m">8</span> <span class="c1"># Number of observations per subject</span>
+
+<span class="c1"># The standard ANOVA uses effects coding</span>
+A <span class="o">=</span> <span class="kp">rep</span><span class="p">(</span> <span class="kt">c</span><span class="p">(</span> <span class="m">-1</span><span class="p">,</span> <span class="m">1</span> <span class="p">),</span> each <span class="o">=</span> No<span class="o">/</span><span class="m">2</span> <span class="p">)</span> <span class="c1"># Factor A</span>
+B <span class="o">=</span> <span class="kp">rep</span><span class="p">(</span> <span class="kt">c</span><span class="p">(</span> <span class="m">-1</span><span class="p">,</span> <span class="m">1</span> <span class="p">),</span> No<span class="o">/</span><span class="m">2</span> <span class="p">)</span> <span class="c1"># Factor B</span>
+AxB <span class="o">=</span> A <span class="o">*</span> B <span class="c1"># Interaction</span>
+
+<span class="c1"># Expand out based on subject number</span>
+A <span class="o">=</span> <span class="kp">rep</span><span class="p">(</span> A<span class="p">,</span> Ns <span class="p">)</span>
+B <span class="o">=</span> <span class="kp">rep</span><span class="p">(</span> B<span class="p">,</span> Ns <span class="p">)</span>
+AxB <span class="o">=</span> <span class="kp">rep</span><span class="p">(</span> AxB<span class="p">,</span> Ns <span class="p">)</span>
+
+<span class="c1"># Design matrix</span>
+X <span class="o">=</span> <span class="kp">cbind</span><span class="p">(</span> <span class="m">1</span><span class="p">,</span> A<span class="p">,</span> B<span class="p">,</span> AxB <span class="p">)</span>
+
+<span class="c1"># Subject index</span>
+subjIndex <span class="o">=</span> <span class="kp">rep</span><span class="p">(</span> <span class="m">1</span><span class="o">:</span>Ns<span class="p">,</span> each <span class="o">=</span> No <span class="p">)</span>
+</pre></div>
+
+
+<p>Next, let us define a set of generating parameters. With hierarchical linear modeling, a repeated measures ANOVA is similar to a model with a random intercept for subjects and a set of fixed effects capturing the main effects and interactions:</p>
+<div class="highlight"><pre><span></span>gp <span class="o">=</span> <span class="kt">list</span><span class="p">(</span>
+  beta <span class="o">=</span> <span class="kp">rbind</span><span class="p">(</span> <span class="m">1</span><span class="p">,</span> <span class="m">.2</span><span class="p">,</span> <span class="m">-.3</span><span class="p">,</span> <span class="m">.2</span> <span class="p">),</span> <span class="c1"># Fixed effects</span>
+  sigma_eta <span class="o">=</span> <span class="m">0.7</span><span class="p">,</span> <span class="c1"># Standard deviation for random intercept for subjects</span>
+  sigma_epsilon <span class="o">=</span> <span class="m">2</span> <span class="c1"># Standard deviation for residual variability</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<p>We are finally ready to simulate a set of responses:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Subject effects</span>
+<span class="kp">set.seed</span><span class="p">(</span> <span class="m">10</span> <span class="p">)</span> <span class="c1"># For reproducibility</span>
+eta <span class="o">=</span> rnorm<span class="p">(</span> Ns<span class="p">,</span> <span class="m">0</span><span class="p">,</span> gp<span class="o">$</span>sigma_eta <span class="p">)</span>
+
+<span class="c1"># Define population mean for each observation</span>
+mu <span class="o">=</span> X <span class="o">%*%</span> gp<span class="o">$</span>beta <span class="o">+</span> eta<span class="p">[</span> subjIndex <span class="p">]</span>
+
+<span class="c1"># Simulate data</span>
+<span class="kp">set.seed</span><span class="p">(</span> <span class="m">20</span> <span class="p">)</span> <span class="c1"># For reproducibility</span>
+Y <span class="o">=</span> rnorm<span class="p">(</span> Ns<span class="o">*</span>No<span class="p">,</span> mu<span class="p">,</span> gp<span class="o">$</span>sigma_epsilon <span class="p">)</span>
+
+<span class="c1"># Create data frame</span>
+df <span class="o">=</span> <span class="kp">cbind</span><span class="p">(</span> Y <span class="o">=</span> Y<span class="p">,</span> A <span class="o">=</span> A<span class="p">,</span> B <span class="o">=</span> B<span class="p">,</span> AxB <span class="o">=</span> AxB<span class="p">,</span> S <span class="o">=</span> subjIndex <span class="p">)</span>
+df <span class="o">=</span> <span class="kp">as.data.frame</span><span class="p">(</span> df <span class="p">)</span>
+</pre></div>
+
+
+<p>We can now carry out parameter recovery to see if I've correctly specified the structure of a mixed effects model with a random intercept for subjects and a set of fixed effects representing the main effects and interaction between two factors, A and B:</p>
+<div class="highlight"><pre><span></span>fit <span class="o">=</span> lmer<span class="p">(</span> Y <span class="o">~</span> <span class="m">1</span> <span class="o">+</span> A <span class="o">+</span> B <span class="o">+</span> AxB <span class="o">+</span> <span class="c1"># Fixed effects (Intercept, main effect of A and B, </span>
+            <span class="p">(</span><span class="m">1</span><span class="o">|</span>S<span class="p">),</span> <span class="c1"># Random intercept per subject</span>
+            data <span class="o">=</span> df <span class="p">)</span>
+</pre></div>
+
+
+<p>We determine extract confidence intervals for the parameters:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Standard 95% confidence intervals</span>
+ui <span class="o">=</span> confint<span class="p">(</span> fit <span class="p">)</span>
+
+<span class="c1"># print( round( ui, 2 ) )</span>
+<span class="c1">#              2.5 % 97.5 %</span>
+<span class="c1"># .sig01       0.37   0.81</span>
+<span class="c1"># .sigma       1.97   2.18</span>
+<span class="c1"># (Intercept)  0.70   1.07</span>
+<span class="c1"># A            0.00   0.29</span>
+<span class="c1"># B           -0.51  -0.23</span>
+<span class="c1"># AxB          0.13   0.42</span>
+</pre></div>
+
+
+<p>As can be seen, the estimates do a good job capturing the original generating parameters.</p>
+<p>We can also use a semi-parametric bootstrap method (more robust but less powerful) to calculate confidence intervals:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Define function to extract test statistics of interest from &#39;lmer&#39; fit object</span>
+f <span class="o">=</span> <span class="kr">function</span><span class="p">(</span> fit <span class="p">)</span> <span class="p">{</span>
+  out <span class="o">=</span> <span class="kt">c</span><span class="p">(</span> 
+    <span class="c1"># Extracting the standard deviation estimate for random effects can be complicated</span>
+    sig01 <span class="o">=</span> <span class="kp">sqrt</span><span class="p">(</span> VarCorr<span class="p">(</span>fit<span class="p">)</span><span class="o">$</span>S<span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="p">),</span>
+    sigma <span class="o">=</span> sigma<span class="p">(</span>fit<span class="p">),</span>
+    <span class="c1"># Extracting the fixed effects is much easier</span>
+    fixef<span class="p">(</span> fit <span class="p">)</span>
+  <span class="p">)</span>
+  <span class="kr">return</span><span class="p">(</span> out <span class="p">)</span>
+<span class="p">}</span>
+R <span class="o">=</span> <span class="m">1000</span> <span class="c1"># Number of bootstrap samples</span>
+sim <span class="o">=</span> bootMer<span class="p">(</span> fit<span class="p">,</span> f<span class="p">,</span> nsim <span class="o">=</span> R <span class="p">)</span>
+ui_boot <span class="o">=</span> <span class="kp">t</span><span class="p">(</span> <span class="kp">apply</span><span class="p">(</span> sim<span class="o">$</span><span class="kp">t</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> quantile<span class="p">,</span> prob <span class="o">=</span> <span class="kt">c</span><span class="p">(</span> <span class="m">.025</span><span class="p">,</span> <span class="m">.975</span> <span class="p">)</span> <span class="p">)</span> <span class="p">)</span>
+
+<span class="c1"># print( round( ui_boot, 2 ) )</span>
+<span class="c1">#              2.5% 97.5%</span>
+<span class="c1"># sig01        0.34  0.79</span>
+<span class="c1"># sigma        1.96  2.18</span>
+<span class="c1"># (Intercept)  0.70  1.07</span>
+<span class="c1"># A           -0.01  0.29</span>
+<span class="c1"># B           -0.50 -0.22</span>
+<span class="c1"># AxB          0.13  0.42</span>
+</pre></div>
+        </div>
+
+          <ul class="tags">
+              <li><a href="../../tag/statistics.html">Statistics</a></li>
+              <li><a href="../../tag/code.html">code</a></li>
+          </ul>
+
+        <div class="all-posts">
+          <a href="../../posts/">&#11013; View all posts</a>
+        </div>
+
+        
+		<!-- Links for older/newer posts (Needs Pelican plugin 'neighbors') -->
+			<p class="prevpost"><i class="fa fa-arrow-left"></i> Older<br />
+			<a href="../../posts/hazard-function/">Hazard functions in R</a></p>
+		
+    </article>
+  </div>
+
+  <!-- Footer -->
+    <footer>
+      <p>
+        Powered by <a href="http://getpelican.com/">Pelican</a>,
+        which takes great advantage of <a href="http://python.org">Python</a>.<br>
+        Theme <a href="https://github.com/wjhopper/academia-red">academia</a> by <a href="http://hopperlab.com/">Will Hopper</a>.
+        Styled with the help of <a href="http://getskeleton.com/">Skeleton</a>
+      </p>
+    </footer>
+  </div>
+
+
+</body>
+</html>
