@@ -12,4 +12,4 @@ My interests include:
 ## Site navigation
 
 * [Websites and software](docs/C01_P000_Links.md)
-* [Research](docs/C03_P000_Academic_work.md)
+* [Research](docs/C02_P000_Research.md)
