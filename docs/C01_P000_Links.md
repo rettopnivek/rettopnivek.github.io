@@ -16,4 +16,7 @@ R packages that I've created:
 * pathdiagrams
 
 
+[Link to Github repositories](https://github.com/rettopnivek)
+
+
 [Return to home page](https://rettopnivek.github.io)
