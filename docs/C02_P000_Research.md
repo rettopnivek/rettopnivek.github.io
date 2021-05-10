@@ -10,4 +10,4 @@ A compilation of my journal publications and presentations that are available fo
 
 * ...
 
-[Return to home page](www.rettopnivek.github.io)
+[Return to home page](https://rettopnivek.github.io)
