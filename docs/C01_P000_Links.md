@@ -4,16 +4,16 @@
 
 Online resources that I've created for statistics and psychology:
 
-* [Tutorials and examples for using R](https://rettopnivek.github.io/R_training/)
-* [A primer on applied statistics](https://rettopnivek.github.io/Tutorials_for_statistics/)
-* Cognitive tasks
+* [Using R - Tutorials and Examples](https://rettopnivek.github.io/R_training/)
+* [A Primer on Applied Statistics](https://rettopnivek.github.io/Tutorials_for_statistics/)
+* Cognitive Tasks
 
 #### Software
 
 R packages that I've created:
 
-* arfpam
+* [arfpam](https://rettopnivek.github.io/arfpam/)
 * pathdiagrams
 
 
-[Return to home page](www.rettopnivek.github.io)
+[Return to home page](https://rettopnivek.github.io)
